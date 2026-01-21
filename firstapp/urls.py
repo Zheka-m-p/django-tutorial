@@ -7,4 +7,10 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),  # Страница "Контакты"
     path('user_detail/<int:user_id>', views.user_detail, name='user_detail'),  # Динамическая страница пользователя
     path('product_detail/<int:id>/<str:category>/', views.product_detail, name='product_detail'), # Передавать можно два параметра динамически
+
+    path('products/', views.filter_products, name='filter_products'), # тестируем GET запрос и передачу параметров
+    path('filter-price/', views.filter_by_price, name='filter-price'), # тестируем два параметра в GET-запросе
+    path('check_age/', views.check_age, name='check_age'), # проверка на возраст для практики
+    path('articles/', views.filter_articles, name='filter_articles') # на получение списка практика
+
 ]
