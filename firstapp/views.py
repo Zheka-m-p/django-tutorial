@@ -12,3 +12,6 @@ def contact(request):
 
 def user_detail(request, user_id):
     return HttpResponse(f"<h2>Пользователь с ID: {user_id}</h2>")
+
+def product_detail(request, id, category):
+    return HttpResponse(f'<h2>Товар {id} в категории "{category}"</h2>')

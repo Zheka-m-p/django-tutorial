@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include # Добавляем include
-from firstapp import views
+from firstapp import views # нужно лишь, если не подключать include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
