@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from unicodedata import category
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 
 
 def index(request):
@@ -12,6 +11,7 @@ def about(request):
 def contact(request):
     return HttpResponse("<h2>Контакты</h2>")
 
+# в другой день
 def user_detail(request, user_id):
     return HttpResponse(f"<h2>Пользователь с ID: {user_id}</h2>")
 
@@ -53,3 +53,10 @@ def filter_articles(request): # # на получение списка прак�
     if lst:
         return HttpResponse(f'Статьи с тегами: {', '.join(lst)}')
     return HttpResponse('Теги не выбраны')
+
+# еще одна другая тема
+def redirect_example(request): # пример простого редиректа
+    return HttpResponseRedirect('/about')
+
+def permanently_redirect_example(request):
+    return HttpResponsePermanentRedirect('https://abilityarena.com/')
