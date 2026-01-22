@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 
 
@@ -54,9 +54,20 @@ def filter_articles(request): # # на получение списка прак�
         return HttpResponse(f'Статьи с тегами: {', '.join(lst)}')
     return HttpResponse('Теги не выбраны')
 
-# еще одна другая тема
+# про редирект
 def redirect_example(request): # пример простого редиректа
     return HttpResponseRedirect('/about')
 
 def permanently_redirect_example(request):
     return HttpResponsePermanentRedirect('https://abilityarena.com/')
+
+# про редирект еще способы - redirect
+def go_to_about(request):
+    return redirect('about')  # ← имя маршрута, а не строка '/about/', можно и на сайт просто "https://example.com"
+
+def redirect_to_profile(request, user_id): # редирект на страницу конкретного пользователя по его айди
+    return redirect('user_detail', user_id=user_id)
+
+# про статус код кастомные
+def forbidden_view(request): #  переход на 404 страницу со статус кодом 403
+    return HttpResponse("Доступ запрещён: status_code = 403", status=403)
