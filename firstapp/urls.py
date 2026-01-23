@@ -2,9 +2,10 @@ from django.urls import path
 from . import views # Импортируем views из текущей папки
 
 urlpatterns = [
-    path('', views.index, name='home'),  # Привязываем корневой маршрут к представлению index - Главная страница
+    path('', views.home, name='home'),  # Привязываем корневой маршрут к представлению index - Главная страница
     path('about/', views.about, name='about'),  # Страница "О нас"
     path('contact/', views.contact, name='contact'),  # Страница "Контакты"
+    path('developer/', views.developer, name='developer'), # Страница о разработчике
 
     path('user_detail/<int:user_id>/', views.user_detail, name='user_detail'),  # Динамическая страница пользователя
     path('product_detail/<int:id>/<str:category>/', views.product_detail, name='product_detail'), # Передавать можно два параметра динамически
@@ -21,4 +22,8 @@ urlpatterns = [
     path('go-profile/<int:user_id>/', views.redirect_to_profile, name='redirect_to_profile'), # перенаправляет на конкретный профиль
 
     path('forbiden/', views.forbidden_view, name='forbiden_custom'), # переход на 403 страницу со статус кодом 403
+
+    path('all_users/', views.users_list, name='users_list'), # добавляем контекст и выводим его: список + цикл
+    path('user_info/', views.user_info, name='user_info'), # добавляем контекст и выводим его: через словарь
+    path('check_age/', views.check_age, name='check_age'), # чекаем возраст через введенные(якобы) данные
 ]

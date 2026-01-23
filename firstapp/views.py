@@ -2,14 +2,21 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 
 
-def index(request):
-    return HttpResponse("<h2>Главная</h2>")
+def home(request): # Главная страница
+    context = {
+        "title": "Главная страница",
+        "user": "Евгений",
+    }
+    return render(request, 'firstapp/home.html', context)
 
-def about(request):
-    return HttpResponse("<h2>О сайте</h2>")
+def about(request): # О сайте, о нас - добавили Шаблон html-формата, вместо обычного текста
+    return render(request, 'firstapp/about.html')
 
 def contact(request):
     return HttpResponse("<h2>Контакты</h2>")
+
+def developer(request): # Страница о разработчике
+    return HttpResponse("<h2>Разработчик: Евгений Черников</h2>")
 
 # в другой день
 def user_detail(request, user_id):
@@ -71,3 +78,22 @@ def redirect_to_profile(request, user_id): # редирект на страни�
 # про статус код кастомные
 def forbidden_view(request): #  переход на 404 страницу со статус кодом 403
     return HttpResponse("Доступ запрещён: status_code = 403", status=403)
+
+
+# начинаем копыхаться с шаблонами и переданными в них контекстами (context)
+def users_list(request): # вывод списка через цикл for - смотреть в шаблоне
+    context = {
+        "users": ["Андрей", "Мария", "Сергей", "Анна"]
+    }
+    return render(request, 'firstapp/users_list.html', context)
+
+
+def user_info(request): # вывод через словарь - смотреть в шаблоне
+    context = {
+        "user": {"name": "Жека", "age": '18+', "city": "Питер"}
+    }
+    return render(request, 'firstapp/profile.html', context)
+
+def check_age(request):
+    context = {"age": 20}
+    return render(request, 'firstapp/age.html', context)

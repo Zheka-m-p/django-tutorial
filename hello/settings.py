@@ -56,8 +56,8 @@ ROOT_URLCONF = 'hello.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [], # [BASE_DIR / "templates"],  # Указываем, что шаблоны могут быть в корне(если добавить в список)
+        'APP_DIRS': True, #  говорит Django искать шаблоны внутри templates/ каждого приложения.
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
