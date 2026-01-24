@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanen
 
 def home(request): # Главная страница
     context = {
-        "title": "Главная страница",
+        "title": "Главная страница моего сайта",
         "user": "Евгений",
     }
     return render(request, 'firstapp/home.html', context)
@@ -12,8 +12,8 @@ def home(request): # Главная страница
 def about(request): # О сайте, о нас - добавили Шаблон html-формата, вместо обычного текста
     return render(request, 'firstapp/about.html')
 
-def contact(request):
-    return HttpResponse("<h2>Контакты</h2>")
+def contacts(request):
+    return render(request, 'firstapp/contacts.html')
 
 def developer(request): # Страница о разработчике
     return HttpResponse("<h2>Разработчик: Евгений Черников</h2>")
@@ -94,6 +94,6 @@ def user_info(request): # вывод через словарь - смотрет�
     }
     return render(request, 'firstapp/profile.html', context)
 
-def check_age(request):
+def check_age(request): # проверка возраста через условие
     context = {"age": 20}
     return render(request, 'firstapp/age.html', context)

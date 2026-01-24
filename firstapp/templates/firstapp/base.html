@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+</head>
+<body>
+    <!-- Шапка — будет на всех страницах -->
+    <nav>
+        <a href="{% url 'home' %}">Главная</a> |
+        <a href="{% url 'about' %}">О нас</a> |
+        <a href="{% url 'contacts' %}">Контакты</a>
+    </nav>
+
+    <hr>
+
+    <!-- Уникальный контент каждой страницы -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

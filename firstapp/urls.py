@@ -4,7 +4,7 @@ from . import views # Импортируем views из текущей папк�
 urlpatterns = [
     path('', views.home, name='home'),  # Привязываем корневой маршрут к представлению index - Главная страница
     path('about/', views.about, name='about'),  # Страница "О нас"
-    path('contact/', views.contact, name='contact'),  # Страница "Контакты"
+    path('contacts/', views.contacts, name='contacts'),  # Страница "Контакты"
     path('developer/', views.developer, name='developer'), # Страница о разработчике
 
     path('user_detail/<int:user_id>/', views.user_detail, name='user_detail'),  # Динамическая страница пользователя
